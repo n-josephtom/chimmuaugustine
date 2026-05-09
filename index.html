@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alexandra Reyes — Content Writer & Marketing Specialist</title>
+  <meta name="description" content="Content writer and marketing specialist helping brands grow through strategic storytelling, SEO, and compelling copy." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────── */
+    :root {
+      --navy:   #0d1b2a;
+      --navy2:  #14263a;
+      --navy3:  #1e3450;
+      --cream:  #f4ede0;
+      --cream2: #e8dece;
+      --gold:   #c9a84c;
+      --gold2:  #e6c46a;
+      --coral:  #e8715a;
+      --coral2: #f08b76;
+      --white:  #fdfaf5;
+      --muted:  #7a9ab8;
+      --text:   #d4e4f0;
+      --border: rgba(201,168,76,0.18);
+
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'DM Sans', sans-serif;
+      --font-mono:    'DM Mono', monospace;
+
+      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* ─── RESET ───────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--navy);
+      color: var(--text);
+      overflow-x: hidden;
+      cursor: none;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    ul { list-style: none; }
+
+    /* ─── CUSTOM CURSOR ──────────────────────────────── */
+    .cursor {
+      position: fixed; width: 10px; height: 10px;
+      background: var(--gold); border-radius: 50%;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s, opacity 0.3s;
+    }
+    .cursor-ring {
+      position: fixed; width: 36px; height: 36px;
+      border: 1.5px solid var(--gold);
+      border-radius: 50%; pointer-events: none; z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: transform 0.18s var(--ease), width 0.25s, height 0.25s, opacity 0.3s;
+      opacity: 0.6;
+    }
+    body:hover .cursor, body:hover .cursor-ring { opacity: 1; }
+
+    /* ─── NAV ────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 3.5rem;
+      background: transparent;
+      transition: background 0.4s var(--ease), backdrop-filter 0.4s, padding 0.3s;
+    }
+    nav.scrolled {
+      background: rgba(13, 27, 42, 0.92);
+      backdrop-filter: blur(18px);
+      padding: 0.85rem 3.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.25rem; font-weight: 700;
+      color: var(--cream);
+      letter-spacing: 0.02em;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links {
+      display: flex; gap: 2.5rem;
+      font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .nav-links a {
+      color: var(--muted);
+      transition: color 0.25s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 1px; background: var(--gold);
+      transition: width 0.3s var(--ease);
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.55rem 1.4rem;
+      border: 1px solid var(--coral);
+      color: var(--coral);
+      border-radius: 2px;
+      transition: background 0.25s, color 0.25s;
+    }
+    .nav-cta:hover { background: var(--coral); color: var(--white); }
+
+    /* ─── HERO ───────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 0 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 85% 40%, rgba(201,168,76,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 80% at 10% 70%, rgba(232,113,90,0.05) 0%, transparent 55%),
+        linear-gradient(160deg, #0d1b2a 0%, #101f30 50%, #0d1b2a 100%);
+    }
+    .hero-grid-lines {
+      position: absolute; inset: 0; opacity: 0.04;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(201,168,76,0.8) 80px),
+        repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(201,168,76,0.8) 80px);
+    }
+    .hero-left {
+      position: relative; z-index: 2;
+      padding: 8rem 0 4rem;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.75rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--coral);
+      margin-bottom: 1.8rem;
+      display: flex; align-items: center; gap: 0.75rem;
+      opacity: 0; animation: fadeUp 0.7s 0.2s var(--ease) forwards;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block;
+      width: 2.5rem; height: 1px; background: var(--coral);
+    }
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 6vw, 6.5rem);
+      font-weight: 900; line-height: 0.95;
+      color: var(--cream);
+      margin-bottom: 0.4rem;
+      opacity: 0; animation: fadeUp 0.8s 0.4s var(--ease) forwards;
+    }
+    .hero-name em {
+      font-style: italic; color: var(--gold);
+      display: block;
+    }
+    .hero-tagline {
+      font-size: 1.1rem; font-weight: 300;
+      color: var(--muted); line-height: 1.65;
+      max-width: 480px; margin: 1.6rem 0 2.8rem;
+      opacity: 0; animation: fadeUp 0.8s 0.6s var(--ease) forwards;
+    }
+    .hero-tagline strong { color: var(--cream); font-weight: 500; }
+    .hero-ctas {
+      display: flex; gap: 1rem;
+      opacity: 0; animation: fadeUp 0.8s 0.8s var(--ease) forwards;
+    }
+    .btn-primary {
+      padding: 0.9rem 2.2rem;
+      background: var(--gold); color: var(--navy);
+      font-size: 0.82rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      border-radius: 2px;
+      transition: transform 0.2s var(--ease-spring), box-shadow 0.25s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(201,168,76,0.3);
+    }
+    .btn-outline {
+      padding: 0.9rem 2.2rem;
+      border: 1px solid var(--border);
+      color: var(--cream2);
+      font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      border-radius: 2px;
+      transition: border-color 0.25s, color 0.25s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    .hero-stats {
+      display: flex; gap: 2.5rem; margin-top: 4rem;
+      opacity: 0; animation: fadeUp 0.8s 1s var(--ease) forwards;
+    }
+    .stat-item { border-left: 2px solid var(--border); padding-left: 1rem; }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2.2rem; font-weight: 700;
+      color: var(--cream); line-height: 1;
+    }
+    .stat-num span { color: var(--gold); }
+    .stat-label {
+      font-size: 0.72rem; color: var(--muted);
+      letter-spacing: 0.12em; text-transform: uppercase;
+      margin-top: 0.3rem;
+    }
+
+    .hero-right {
+      position: relative; z-index: 2;
+      display: flex; align-items: center; justify-content: flex-end;
+      padding: 8rem 0 4rem;
+    }
+    .hero-card {
+      width: 380px;
+      background: var(--navy2);
+      border: 1px solid var(--border);
+      border-radius: 4px; padding: 2.5rem;
+      position: relative;
+      opacity: 0; animation: fadeIn 1s 0.9s var(--ease) forwards;
+    }
+    .hero-card::before {
+      content: ''; position: absolute;
+      top: -1px; left: 2rem; right: 2rem; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .hero-card-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem; color: var(--coral);
+      letter-spacing: 0.2em; text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .service-pill {
+      display: inline-block;
+      padding: 0.35rem 0.85rem; margin: 0.25rem 0.2rem;
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.15);
+      color: var(--gold2); border-radius: 100px;
+      font-size: 0.78rem; font-weight: 500;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .service-pill:hover {
+      background: rgba(201,168,76,0.15);
+      border-color: rgba(201,168,76,0.35);
+    }
+    .service-pill.coral {
+      background: rgba(232,113,90,0.08);
+      border-color: rgba(232,113,90,0.15);
+      color: var(--coral2);
+    }
+    .service-pill.coral:hover {
+      background: rgba(232,113,90,0.15);
+      border-color: rgba(232,113,90,0.3);
+    }
+    .hero-card-divider {
+      height: 1px; background: var(--border);
+      margin: 1.5rem 0;
+    }
+    .hero-card-row {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 0.85rem;
+    }
+    .hero-card-row:last-child { margin-bottom: 0; }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+    .dot.coral { background: var(--coral); }
+    .hero-card-text { font-size: 0.85rem; color: var(--cream2); line-height: 1.45; }
+
+    /* ─── MARQUEE ────────────────────────────────────── */
+    .marquee-wrap {
+      overflow: hidden;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--navy2);
+      padding: 1rem 0;
+    }
+    .marquee {
+      display: flex; gap: 3rem; width: max-content;
+      animation: marquee 28s linear infinite;
+    }
+    .marquee-item {
+      font-family: var(--font-display);
+      font-size: 1rem; font-style: italic;
+      color: var(--muted); white-space: nowrap;
+      display: flex; align-items: center; gap: 3rem;
+    }
+    .marquee-item::after {
+      content: '◆'; font-size: 0.5rem;
+      color: var(--gold); font-style: normal;
+    }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    /* ─── SECTIONS ───────────────────────────────────── */
+    section { padding: 7rem 3.5rem; }
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem; color: var(--coral);
+      letter-spacing: 0.25em; text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .section-label::before {
+      content: ''; display: block;
+      width: 1.75rem; height: 1px; background: var(--coral);
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 700; color: var(--cream);
+      line-height: 1.1; margin-bottom: 1.5rem;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+
+    /* ─── ABOUT ──────────────────────────────────────── */
+    #about {
+      background: var(--navy2);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+    }
+    .about-text p {
+      font-size: 1.05rem; color: var(--muted);
+      line-height: 1.8; margin-bottom: 1.25rem;
+    }
+    .about-text p strong { color: var(--cream); font-weight: 600; }
+    .about-right { display: flex; flex-direction: column; gap: 1.5rem; }
+    .exp-card {
+      background: var(--navy3);
+      border: 1px solid var(--border); border-radius: 4px;
+      padding: 1.5rem 1.75rem;
+      display: flex; gap: 1.25rem; align-items: flex-start;
+      transition: border-color 0.25s, transform 0.25s var(--ease);
+    }
+    .exp-card:hover {
+      border-color: rgba(201,168,76,0.4);
+      transform: translateX(4px);
+    }
+    .exp-icon {
+      width: 2.5rem; height: 2.5rem; border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+    }
+    .exp-icon.gold { background: rgba(201,168,76,0.12); }
+    .exp-icon.coral { background: rgba(232,113,90,0.12); }
+    .exp-icon.blue { background: rgba(122,154,184,0.12); }
+    .exp-title { font-size: 0.9rem; font-weight: 600; color: var(--cream); margin-bottom: 0.3rem; }
+    .exp-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.55; }
+
+    /* ─── SERVICES ───────────────────────────────────── */
+    #services { background: var(--navy); }
+    .services-intro {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+      margin-bottom: 4rem; align-items: end;
+    }
+    .services-desc { font-size: 1rem; color: var(--muted); line-height: 1.75; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .service-card {
+      background: var(--navy);
+      padding: 2.5rem 2rem;
+      position: relative; overflow: hidden;
+      transition: background 0.3s;
+    }
+    .service-card:hover { background: var(--navy2); }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 2px; background: var(--gold);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s var(--ease);
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-num {
+      font-family: var(--font-display);
+      font-size: 3.5rem; font-weight: 900;
+      color: rgba(201,168,76,0.08); line-height: 1;
+      margin-bottom: 1rem; position: absolute; top: 1.5rem; right: 1.5rem;
+    }
+    .service-emoji { font-size: 1.75rem; margin-bottom: 1rem; }
+    .service-name {
+      font-family: var(--font-display);
+      font-size: 1.3rem; font-weight: 700;
+      color: var(--cream); margin-bottom: 0.75rem;
+    }
+    .service-desc { font-size: 0.87rem; color: var(--muted); line-height: 1.7; }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.25rem; }
+    .tag {
+      font-size: 0.7rem; letter-spacing: 0.08em;
+      padding: 0.2rem 0.6rem;
+      border: 1px solid var(--border); color: var(--muted);
+      border-radius: 2px;
+    }
+
+    /* ─── PORTFOLIO ──────────────────────────────────── */
+    #portfolio { background: var(--navy2); }
+    .portfolio-header {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+      align-items: end; margin-bottom: 4rem;
+    }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .portfolio-card {
+      background: var(--navy3); border: 1px solid var(--border);
+      border-radius: 4px; overflow: hidden;
+      transition: transform 0.3s var(--ease), box-shadow 0.3s;
+    }
+    .portfolio-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    }
+    .portfolio-card.featured {
+      grid-column: span 2;
+      display: grid; grid-template-columns: 1fr 1fr;
+    }
+    .pc-visual {
+      height: 200px; display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .pc-visual.gold-bg { background: linear-gradient(135deg, rgba(201,168,76,0.12) 0%, rgba(201,168,76,0.04) 100%); }
+    .pc-visual.coral-bg { background: linear-gradient(135deg, rgba(232,113,90,0.12) 0%, rgba(232,113,90,0.04) 100%); }
+    .pc-visual.blue-bg { background: linear-gradient(135deg, rgba(122,154,184,0.12) 0%, rgba(122,154,184,0.04) 100%); }
+    .pc-visual.dark-bg { background: linear-gradient(135deg, rgba(20,38,58,0.8) 0%, rgba(30,52,80,0.6) 100%); }
+    .portfolio-card.featured .pc-visual { height: 100%; min-height: 280px; }
+    .pc-icon { font-size: 4rem; opacity: 0.6; }
+    .pc-metric {
+      position: absolute; bottom: 1rem; right: 1rem;
+      background: rgba(13,27,42,0.85); border: 1px solid var(--border);
+      padding: 0.4rem 0.8rem; border-radius: 2px;
+      font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold);
+    }
+    .pc-body { padding: 1.75rem; }
+    .pc-cat {
+      font-family: var(--font-mono); font-size: 0.68rem;
+      color: var(--coral); letter-spacing: 0.15em; text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .pc-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem; font-weight: 700;
+      color: var(--cream); margin-bottom: 0.6rem; line-height: 1.3;
+    }
+    .portfolio-card.featured .pc-title { font-size: 1.5rem; }
+    .pc-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.25rem; }
+    .pc-results {
+      display: flex; gap: 1.5rem;
+    }
+    .pc-result { text-align: center; }
+    .pc-result-num {
+      font-family: var(--font-display); font-size: 1.4rem; font-weight: 700;
+      color: var(--gold); line-height: 1;
+    }
+    .pc-result-label { font-size: 0.68rem; color: var(--muted); margin-top: 0.2rem; }
+    .pc-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.78rem; font-weight: 600;
+      color: var(--coral); letter-spacing: 0.08em;
+      margin-top: 1rem;
+      transition: gap 0.2s;
+    }
+    .pc-link:hover { gap: 0.65rem; }
+
+    /* ─── PROCESS ────────────────────────────────────── */
+    #process { background: var(--navy); }
+    .process-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+      margin-top: 3.5rem; position: relative;
+    }
+    .process-grid::before {
+      content: ''; position: absolute;
+      top: 2.1rem; left: 2rem; right: 2rem; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), var(--border), transparent);
+    }
+    .process-step { position: relative; }
+    .step-num {
+      width: 4.2rem; height: 4.2rem;
+      border: 1px solid var(--border); border-radius: 50%;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 1.3rem; font-weight: 700;
+      color: var(--gold); margin-bottom: 1.5rem;
+      position: relative; z-index: 1;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .process-step:hover .step-num {
+      background: rgba(201,168,76,0.08); border-color: var(--gold);
+    }
+    .step-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem; font-weight: 700;
+      color: var(--cream); margin-bottom: 0.6rem;
+    }
+    .step-desc { font-size: 0.87rem; color: var(--muted); line-height: 1.7; }
+
+    /* ─── TESTIMONIALS ───────────────────────────────── */
+    #testimonials { background: var(--navy2); }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+    .testimonial-card {
+      background: var(--navy3); border: 1px solid var(--border);
+      border-radius: 4px; padding: 2rem;
+      position: relative;
+      transition: border-color 0.3s, transform 0.3s var(--ease);
+    }
+    .testimonial-card:hover {
+      border-color: rgba(201,168,76,0.3);
+      transform: translateY(-3px);
+    }
+    .quote-mark {
+      font-family: var(--font-display); font-size: 5rem; font-weight: 900;
+      color: rgba(201,168,76,0.1); line-height: 0.7;
+      position: absolute; top: 1.5rem; right: 1.75rem;
+      user-select: none;
+    }
+    .testimonial-text {
+      font-size: 0.92rem; color: var(--cream2);
+      line-height: 1.75; margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+    .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+    .author-avatar {
+      width: 2.5rem; height: 2.5rem; border-radius: 50%;
+      background: var(--navy3); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; color: var(--gold); font-size: 0.9rem;
+    }
+    .author-name { font-size: 0.87rem; font-weight: 600; color: var(--cream); }
+    .author-role { font-size: 0.75rem; color: var(--muted); margin-top: 0.15rem; }
+    .stars { color: var(--gold); font-size: 0.75rem; margin-bottom: 1rem; }
+
+    /* ─── RESUME ─────────────────────────────────────── */
+    #resume { background: var(--navy); }
+    .resume-header {
+      display: grid; grid-template-columns: 1fr auto; gap: 2rem;
+      align-items: end; margin-bottom: 2.5rem;
+    }
+    .resume-actions { display: flex; gap: 0.75rem; align-items: center; }
+    .resume-viewer {
+      border: 1px solid var(--border); border-radius: 4px;
+      overflow: hidden;
+      background: var(--cream);
+      position: relative;
+    }
+    .resume-toolbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.75rem 1.25rem;
+      background: var(--navy3); border-bottom: 1px solid var(--border);
+    }
+    .resume-toolbar-label {
+      font-family: var(--font-mono); font-size: 0.72rem;
+      color: var(--muted); letter-spacing: 0.1em;
+    }
+    .resume-toolbar-dots { display: flex; gap: 0.4rem; }
+    .rtd {
+      width: 10px; height: 10px; border-radius: 50%;
+    }
+    .rtd.red { background: #ff5f57; }
+    .rtd.yellow { background: #febc2e; }
+    .rtd.green { background: #28c840; }
+    .resume-embed-wrap {
+      width: 100%; height: 780px;
+    }
+    .resume-embed-wrap embed,
+    .resume-embed-wrap iframe {
+      width: 100%; height: 100%; border: none; display: block;
+    }
+    /* Fallback message for no-PDF browsers */
+    .pdf-fallback {
+      display: none;
+      flex-direction: column; align-items: center; justify-content: center;
+      height: 100%; background: var(--navy2);
+      gap: 1rem; text-align: center; padding: 3rem;
+    }
+    .pdf-fallback p { color: var(--muted); font-size: 0.9rem; }
+
+    /* ─── CONTACT ────────────────────────────────────── */
+    #contact { background: var(--navy2); }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+      align-items: start; margin-top: 3.5rem;
+    }
+    .contact-info p {
+      font-size: 1rem; color: var(--muted); line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+    .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-link {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: var(--navy3); border: 1px solid var(--border);
+      border-radius: 4px;
+      transition: border-color 0.25s, transform 0.25s var(--ease);
+    }
+    .contact-link:hover {
+      border-color: rgba(201,168,76,0.3); transform: translateX(4px);
+    }
+    .cl-icon { font-size: 1.2rem; }
+    .cl-label { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+    .cl-value { font-size: 0.9rem; color: var(--cream); font-weight: 500; margin-top: 0.15rem; }
+    .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .form-label {
+      font-size: 0.72rem; color: var(--muted);
+      letter-spacing: 0.12em; text-transform: uppercase;
+      font-weight: 500;
+    }
+    .form-input, .form-textarea, .form-select {
+      background: var(--navy3); border: 1px solid var(--border);
+      color: var(--cream); font-family: var(--font-body); font-size: 0.9rem;
+      padding: 0.85rem 1rem; border-radius: 2px;
+      outline: none; transition: border-color 0.25s;
+      appearance: none;
+    }
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      border-color: var(--gold);
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: rgba(122,154,184,0.5); }
+    .form-textarea { resize: vertical; min-height: 130px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-submit {
+      padding: 1rem 2rem;
+      background: var(--gold); color: var(--navy);
+      font-family: var(--font-body);
+      font-size: 0.85rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      border: none; border-radius: 2px; cursor: none;
+      transition: transform 0.2s var(--ease-spring), box-shadow 0.25s;
+    }
+    .form-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(201,168,76,0.3);
+    }
+    .form-success {
+      display: none;
+      background: rgba(40, 200, 64, 0.08); border: 1px solid rgba(40,200,64,0.25);
+      color: #6ee7b7; padding: 1rem 1.25rem; border-radius: 4px;
+      font-size: 0.88rem; text-align: center;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────── */
+    footer {
+      background: #080f18;
+      padding: 3rem 3.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid var(--border);
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.1rem; font-weight: 700; color: var(--cream);
+    }
+    .footer-logo span { color: var(--gold); }
+    .footer-copy { font-size: 0.8rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a {
+      font-size: 0.78rem; color: var(--muted);
+      transition: color 0.25s;
+      letter-spacing: 0.08em;
+    }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ─── ANIMATIONS ─────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 1024px) {
+      nav { padding: 1rem 2rem; }
+      nav.scrolled { padding: 0.75rem 2rem; }
+      #hero { grid-template-columns: 1fr; padding: 0 2rem; }
+      .hero-right { display: none; }
+      .hero-left { padding: 10rem 0 5rem; }
+      #about { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 2rem; }
+      section { padding: 5rem 2rem; }
+      .services-intro { grid-template-columns: 1fr; gap: 1.5rem; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .portfolio-card.featured { grid-template-columns: 1fr; }
+      .portfolio-card.featured .pc-visual { height: 200px; }
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-grid::before { display: none; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .nav-links { display: none; }
+      footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+      body { cursor: auto; }
+      .cursor, .cursor-ring { display: none; }
+    }
+    @media (max-width: 640px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .portfolio-card.featured { grid-column: span 1; }
+      .process-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-stats { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ══ NAV ══════════════════════════════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-logo">Alex<span>.</span>Reyes</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Work</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Hire Me</a>
+  </nav>
+
+  <!-- ══ HERO ══════════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid-lines"></div>
+
+    <div class="hero-left">
+      <div class="hero-eyebrow">Available for Projects — 2025</div>
+      <h1 class="hero-name">
+        Alexandra<em>Reyes.</em>
+      </h1>
+      <p class="hero-tagline">
+        <strong>Content Writer &amp; Marketing Specialist</strong> helping ambitious brands
+        grow through strategic storytelling, SEO-first content, and copy that actually converts.
+      </p>
+      <div class="hero-ctas">
+        <a href="#portfolio" class="btn-primary">View My Work</a>
+        <a href="#resume" class="btn-outline">Download Resume</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">7<span>+</span></div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">80<span>+</span></div>
+          <div class="stat-label">Clients Served</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">200<span>%</span></div>
+          <div class="stat-label">Avg Traffic Lift</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-card">
+        <div class="hero-card-label">// Specialisations</div>
+        <div>
+          <span class="service-pill">SEO Content</span>
+          <span class="service-pill coral">Email Marketing</span>
+          <span class="service-pill">Brand Strategy</span>
+          <span class="service-pill coral">Thought Leadership</span>
+          <span class="service-pill">White Papers</span>
+          <span class="service-pill">UX Copy</span>
+          <span class="service-pill coral">Social Media</span>
+          <span class="service-pill">Case Studies</span>
+        </div>
+        <div class="hero-card-divider"></div>
+        <div class="hero-card-row">
+          <div class="dot"></div>
+          <div class="hero-card-text">Ranked 14 articles #1 on Google for competitive keywords</div>
+        </div>
+        <div class="hero-card-row">
+          <div class="dot coral"></div>
+          <div class="hero-card-text">Built blogs from 0 → 95K monthly organic visitors</div>
+        </div>
+        <div class="hero-card-row">
+          <div class="dot"></div>
+          <div class="hero-card-text">38% avg email open rate — industry avg. is 21%</div>
+        </div>
+        <div class="hero-card-row">
+          <div class="dot coral"></div>
+          <div class="hero-card-text">4.2M LinkedIn impressions for a single content series</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ MARQUEE ════════════════════════════════════════════ -->
+  <div class="marquee-wrap">
+    <div class="marquee">
+      <span class="marquee-item">SEO Content Strategy</span>
+      <span class="marquee-item">Email Campaigns</span>
+      <span class="marquee-item">Long-Form Articles</span>
+      <span class="marquee-item">Brand Storytelling</span>
+      <span class="marquee-item">Conversion Copywriting</span>
+      <span class="marquee-item">White Papers</span>
+      <span class="marquee-item">LinkedIn Growth</span>
+      <span class="marquee-item">Editorial Planning</span>
+      <span class="marquee-item">SEO Content Strategy</span>
+      <span class="marquee-item">Email Campaigns</span>
+      <span class="marquee-item">Long-Form Articles</span>
+      <span class="marquee-item">Brand Storytelling</span>
+      <span class="marquee-item">Conversion Copywriting</span>
+      <span class="marquee-item">White Papers</span>
+      <span class="marquee-item">LinkedIn Growth</span>
+      <span class="marquee-item">Editorial Planning</span>
+    </div>
+  </div>
+
+  <!-- ══ ABOUT ═══════════════════════════════════════════════ -->
+  <section id="about">
+    <div class="about-text">
+      <div class="section-label reveal">About Me</div>
+      <h2 class="section-title reveal reveal-delay-1">
+        Words that <em>work</em><br>for your brand.
+      </h2>
+      <div class="reveal reveal-delay-2">
+        <p>
+          I'm Alexandra — a Vancouver-based content writer and marketing specialist who believes
+          <strong>great content should do two things:</strong> tell a compelling story and move the needle
+          on business goals. Not one or the other.
+        </p>
+        <p>
+          Over 7 years I've worked with B2B SaaS companies, e-commerce brands, and digital agencies
+          to build content ecosystems that generate <strong>measurable, lasting growth.</strong> My
+          work spans SEO strategy, email marketing, thought leadership, and high-stakes conversion copy.
+        </p>
+        <p>
+          Before going independent, I led content strategy at Luminary Digital — a top-ranked
+          Vancouver agency — managing a team of writers and serving 12 enterprise clients simultaneously.
+        </p>
+      </div>
+    </div>
+    <div class="about-right">
+      <div class="exp-card reveal">
+        <div class="exp-icon gold">🏆</div>
+        <div>
+          <div class="exp-title">HubSpot Content Marketing Certified</div>
+          <div class="exp-desc">Certified in inbound methodology, content creation, and marketing strategy.</div>
+        </div>
+      </div>
+      <div class="exp-card reveal reveal-delay-1">
+        <div class="exp-icon coral">📊</div>
+        <div>
+          <div class="exp-title">Google Analytics 4 Certified</div>
+          <div class="exp-desc">Fluent in GA4, Google Search Console, Ahrefs, and SEMrush.</div>
+        </div>
+      </div>
+      <div class="exp-card reveal reveal-delay-2">
+        <div class="exp-icon blue">🎓</div>
+        <div>
+          <div class="exp-title">BA Communications &amp; Journalism, SFU</div>
+          <div class="exp-desc">Simon Fraser University, Burnaby BC — Class of 2017.</div>
+        </div>
+      </div>
+      <div class="exp-card reveal reveal-delay-3">
+        <div class="exp-icon gold">✍️</div>
+        <div>
+          <div class="exp-title">Copyblogger Certified Content Marketer</div>
+          <div class="exp-desc">Advanced training in persuasive writing, audience building, and content monetisation.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SERVICES ════════════════════════════════════════════ -->
+  <section id="services">
+    <div class="services-intro">
+      <div>
+        <div class="section-label reveal">What I Do</div>
+        <h2 class="section-title reveal reveal-delay-1">Services built<br>for <em>growth.</em></h2>
+      </div>
+      <p class="services-desc reveal reveal-delay-2">
+        From a single blog post to a full content marketing engine — I offer
+        end-to-end strategy and execution that compounds over time.
+      </p>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-emoji">✍️</div>
+        <div class="service-name">SEO Content Writing</div>
+        <div class="service-desc">Long-form articles, guides, and pillar pages built around strategic keyword clusters. Every piece is researched, optimised, and designed to rank.</div>
+        <div class="service-tags">
+          <span class="tag">Blog Posts</span><span class="tag">Pillar Pages</span><span class="tag">Guides</span><span class="tag">Listicles</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-emoji">📧</div>
+        <div class="service-name">Email Marketing</div>
+        <div class="service-desc">Welcome sequences, drip campaigns, and newsletters that nurture leads and drive repeat sales. Open rates consistently above 35%.</div>
+        <div class="service-tags">
+          <span class="tag">Drip Sequences</span><span class="tag">Newsletters</span><span class="tag">Re-engagement</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-emoji">🎯</div>
+        <div class="service-name">Content Strategy</div>
+        <div class="service-desc">Audits, competitor analysis, editorial calendar planning, and a content roadmap aligned to your business goals and audience needs.</div>
+        <div class="service-tags">
+          <span class="tag">Audits</span><span class="tag">Roadmaps</span><span class="tag">Calendars</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <div class="service-emoji">💼</div>
+        <div class="service-name">Brand &amp; Web Copy</div>
+        <div class="service-desc">Homepage, about, product pages, and brand messaging that clearly communicates your value and turns visitors into customers.</div>
+        <div class="service-tags">
+          <span class="tag">Web Copy</span><span class="tag">Brand Voice</span><span class="tag">Landing Pages</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">05</div>
+        <div class="service-emoji">📄</div>
+        <div class="service-name">White Papers &amp; Reports</div>
+        <div class="service-desc">Research-backed long-form assets for B2B lead generation — white papers, e-books, industry reports, and executive briefs.</div>
+        <div class="service-tags">
+          <span class="tag">White Papers</span><span class="tag">eBooks</span><span class="tag">Case Studies</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">06</div>
+        <div class="service-emoji">📱</div>
+        <div class="service-name">Social Media &amp; LinkedIn</div>
+        <div class="service-desc">Thought leadership content and LinkedIn strategies that grow your personal brand and company reach. Built for engagement and connection.</div>
+        <div class="service-tags">
+          <span class="tag">LinkedIn</span><span class="tag">Thought Leadership</span><span class="tag">Social Copy</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PORTFOLIO ════════════════════════════════════════════ -->
+  <section id="portfolio">
+    <div class="portfolio-header">
+      <div>
+        <div class="section-label reveal">Selected Work</div>
+        <h2 class="section-title reveal reveal-delay-1">Results you<br>can <em>measure.</em></h2>
+      </div>
+      <p class="services-desc reveal reveal-delay-2">
+        A selection of campaigns, articles, and content systems that delivered real business outcomes.
+      </p>
+    </div>
+    <div class="portfolio-grid">
+      <!-- Featured -->
+      <div class="portfolio-card featured reveal">
+        <div class="pc-visual gold-bg">
+          <div class="pc-icon">📈</div>
+          <div class="pc-metric">+320K Views</div>
+        </div>
+        <div class="pc-body">
+          <div class="pc-cat">SEO Long-Form · SaaS</div>
+          <div class="pc-title">The Ultimate SaaS Onboarding Guide: From Sign-Up to Power User</div>
+          <div class="pc-desc">A 9,000-word definitive guide targeting a cluster of 14 high-intent keywords. Ranked #1 on Google within 3 months and became the brand's single highest-traffic asset for 2 consecutive years.</div>
+          <div class="pc-results">
+            <div class="pc-result"><div class="pc-result-num">#1</div><div class="pc-result-label">Google Rank</div></div>
+            <div class="pc-result"><div class="pc-result-num">320K</div><div class="pc-result-label">Total Views</div></div>
+            <div class="pc-result"><div class="pc-result-num">14</div><div class="pc-result-label">Keywords Ranked</div></div>
+          </div>
+          <div class="pc-link">View Case Study →</div>
+        </div>
+      </div>
+
+      <div class="portfolio-card reveal">
+        <div class="pc-visual coral-bg">
+          <div class="pc-icon">📧</div>
+          <div class="pc-metric">38% Open Rate</div>
+        </div>
+        <div class="pc-body">
+          <div class="pc-cat">Email Marketing · E-Commerce</div>
+          <div class="pc-title">Post-Purchase Email Nurture Sequence</div>
+          <div class="pc-desc">6-email drip campaign for an e-commerce client that lifted repeat purchase rate by 22% in 90 days.</div>
+          <div class="pc-results">
+            <div class="pc-result"><div class="pc-result-num">+22%</div><div class="pc-result-label">Repeat Purchases</div></div>
+            <div class="pc-result"><div class="pc-result-num">38%</div><div class="pc-result-label">Open Rate</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-card reveal reveal-delay-1">
+        <div class="pc-visual blue-bg">
+          <div class="pc-icon">💼</div>
+          <div class="pc-metric">4.2M Impressions</div>
+        </div>
+        <div class="pc-body">
+          <div class="pc-cat">LinkedIn Thought Leadership · B2B</div>
+          <div class="pc-title">Executive LinkedIn Content Series</div>
+          <div class="pc-desc">6-month editorial programme for a B2B tech client — 3 posts per week generating 4.2M impressions and 18K net new followers.</div>
+          <div class="pc-results">
+            <div class="pc-result"><div class="pc-result-num">4.2M</div><div class="pc-result-label">Impressions</div></div>
+            <div class="pc-result"><div class="pc-result-num">18K</div><div class="pc-result-label">New Followers</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-card reveal reveal-delay-2">
+        <div class="pc-visual dark-bg">
+          <div class="pc-icon">📄</div>
+          <div class="pc-metric">FinTech Rebrand</div>
+        </div>
+        <div class="pc-body">
+          <div class="pc-cat">White Papers · FinTech</div>
+          <div class="pc-title">FinTech Startup Full Content Suite</div>
+          <div class="pc-desc">3 white papers, 8 case studies, and complete website copy for a FinTech Series A startup's rebrand and product launch.</div>
+          <div class="pc-results">
+            <div class="pc-result"><div class="pc-result-num">3</div><div class="pc-result-label">White Papers</div></div>
+            <div class="pc-result"><div class="pc-result-num">8</div><div class="pc-result-label">Case Studies</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PROCESS ══════════════════════════════════════════════ -->
+  <section id="process">
+    <div class="section-label reveal">How I Work</div>
+    <h2 class="section-title reveal reveal-delay-1">A process built<br>for <em>clarity.</em></h2>
+    <div class="process-grid">
+      <div class="process-step reveal">
+        <div class="step-num">01</div>
+        <div class="step-title">Discover &amp; Audit</div>
+        <div class="step-desc">I start by understanding your brand, audience, goals, and existing content. A thorough audit surfaces quick wins and strategic gaps.</div>
+      </div>
+      <div class="process-step reveal reveal-delay-1">
+        <div class="step-num">02</div>
+        <div class="step-title">Strategy &amp; Plan</div>
+        <div class="step-desc">Keyword research, competitor analysis, and editorial calendar creation. Every piece earns its place before a word is written.</div>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="step-num">03</div>
+        <div class="step-title">Write &amp; Optimise</div>
+        <div class="step-desc">Thoughtful first drafts with SEO baked in. Clear briefs, structured outlines, and collaborative revisions until it's exactly right.</div>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="step-num">04</div>
+        <div class="step-title">Measure &amp; Iterate</div>
+        <div class="step-desc">Monthly reporting on rankings, traffic, and conversions. Content that isn't performing gets updated, repurposed, or replaced.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TESTIMONIALS ════════════════════════════════════════ -->
+  <section id="testimonials">
+    <div class="section-label reveal">Kind Words</div>
+    <h2 class="section-title reveal reveal-delay-1">Clients who <em>trust</em> the work.</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="quote-mark">"</div>
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">
+          Alex transformed our content from a vanity metric into a genuine revenue channel. Within six months our organic traffic tripled and our sales team started getting warm inbound leads for the first time.
+        </div>
+        <div class="testimonial-author">
+          <div class="author-avatar">MS</div>
+          <div>
+            <div class="author-name">Marcus S.</div>
+            <div class="author-role">CEO, BrightPath SaaS</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="quote-mark">"</div>
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">
+          The email sequences Alex wrote for us are still running two years later. She understood our customers better than most of our internal team did — the copy felt genuinely human.
+        </div>
+        <div class="testimonial-author">
+          <div class="author-avatar">KL</div>
+          <div>
+            <div class="author-name">Keiko L.</div>
+            <div class="author-role">Head of E-Commerce, Bloom &amp; Co.</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="quote-mark">"</div>
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">
+          Working with Alex on our LinkedIn strategy was a game-changer. 4.2 million impressions in six months. Our founder is now considered a genuine voice in the industry because of her work.
+        </div>
+        <div class="testimonial-author">
+          <div class="author-avatar">TW</div>
+          <div>
+            <div class="author-name">Tom W.</div>
+            <div class="author-role">Marketing Director, NexaLogic</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ RESUME ════════════════════════════════════════════════ -->
+  <section id="resume">
+    <div class="resume-header">
+      <div>
+        <div class="section-label reveal">My Resume</div>
+        <h2 class="section-title reveal reveal-delay-1">Experience &amp; <em>credentials.</em></h2>
+      </div>
+      <div class="resume-actions reveal">
+        <a href="resume.pdf" download="Alexandra_Reyes_Resume.pdf" class="btn-outline" style="cursor:none;">
+          ↓ &nbsp;Download PDF
+        </a>
+      </div>
+    </div>
+    <div class="resume-viewer reveal">
+      <div class="resume-toolbar">
+        <div class="resume-toolbar-dots">
+          <div class="rtd red"></div>
+          <div class="rtd yellow"></div>
+          <div class="rtd green"></div>
+        </div>
+        <div class="resume-toolbar-label">Alexandra_Reyes_Resume.pdf</div>
+        <div style="width:54px"></div>
+      </div>
+      <div class="resume-embed-wrap" id="pdfContainer">
+        <!-- Native embed — works in Chrome, Firefox, Safari, Edge -->
+        <embed
+          src="resume.pdf#toolbar=1&navpanes=0&scrollbar=1&view=FitH"
+          type="application/pdf"
+          width="100%"
+          height="100%"
+          id="pdfEmbed"
+        />
+        <!-- Fallback for browsers / mobile that block inline PDFs -->
+        <div class="pdf-fallback" id="pdfFallback">
+          <div style="font-size:3rem">📄</div>
+          <p style="color:var(--cream);font-size:1.1rem;font-weight:600;">Resume Preview</p>
+          <p>Your browser doesn't support inline PDFs.<br>Click below to view or download.</p>
+          <a href="resume.pdf" target="_blank" rel="noopener" class="btn-primary" style="margin-top:1rem;display:inline-block;cursor:auto;">Open Resume PDF</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CONTACT ════════════════════════════════════════════ -->
+  <section id="contact">
+    <div class="section-label reveal">Get In Touch</div>
+    <h2 class="section-title reveal reveal-delay-1">Let's build something<br><em>remarkable.</em></h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p class="reveal">
+          Whether you need a one-off article, a full content strategy, or an ongoing
+          writing partnership — I'd love to hear about your project. I typically respond
+          within one business day.
+        </p>
+        <div class="contact-links reveal reveal-delay-1">
+          <a href="mailto:alexandra.reyes@email.com" class="contact-link">
+            <div class="cl-icon">📧</div>
+            <div>
+              <div class="cl-label">Email</div>
+              <div class="cl-value">alexandra.reyes@email.com</div>
+            </div>
+          </a>
+          <a href="https://linkedin.com/in/alexreyes" target="_blank" rel="noopener" class="contact-link">
+            <div class="cl-icon">💼</div>
+            <div>
+              <div class="cl-label">LinkedIn</div>
+              <div class="cl-value">linkedin.com/in/alexreyes</div>
+            </div>
+          </a>
+          <a href="https://twitter.com/alexreyes" target="_blank" rel="noopener" class="contact-link">
+            <div class="cl-icon">𝕏</div>
+            <div>
+              <div class="cl-label">Twitter / X</div>
+              <div class="cl-value">@alexreyes_writes</div>
+            </div>
+          </a>
+          <div class="contact-link">
+            <div class="cl-icon">📍</div>
+            <div>
+              <div class="cl-label">Location</div>
+              <div class="cl-value">Vancouver, British Columbia, Canada</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form reveal reveal-delay-2" id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="fname">First Name</label>
+            <input class="form-input" id="fname" type="text" placeholder="Jane" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="lname">Last Name</label>
+            <input class="form-input" id="lname" type="text" placeholder="Smith" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">Email</label>
+          <input class="form-input" id="email" type="email" placeholder="jane@company.com" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="service">Service Needed</label>
+          <select class="form-select" id="service">
+            <option value="" style="background:#0d1b2a">Select a service…</option>
+            <option value="seo" style="background:#0d1b2a">SEO Content Writing</option>
+            <option value="email" style="background:#0d1b2a">Email Marketing</option>
+            <option value="strategy" style="background:#0d1b2a">Content Strategy</option>
+            <option value="copy" style="background:#0d1b2a">Brand &amp; Web Copy</option>
+            <option value="whitepapers" style="background:#0d1b2a">White Papers / Reports</option>
+            <option value="social" style="background:#0d1b2a">Social Media / LinkedIn</option>
+            <option value="other" style="background:#0d1b2a">Something else</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="message">Message</label>
+          <textarea class="form-textarea" id="message" placeholder="Tell me about your project, goals, and timeline…" required></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Message →</button>
+        <div class="form-success" id="formSuccess">
+          ✓ &nbsp; Message sent! I'll get back to you within one business day.
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ════════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-logo">Alex<span>.</span>Reyes</div>
+    <div class="footer-copy">© 2025 Alexandra Reyes. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Work</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    // ── Custom cursor ───────────────────────────────────────
+    const cursor     = document.getElementById('cursor');
+    const cursorRing = document.getElementById('cursorRing');
+    let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+    document.addEventListener('mousemove', e => {
+      mouseX = e.clientX; mouseY = e.clientY;
+      cursor.style.left = mouseX + 'px';
+      cursor.style.top  = mouseY + 'px';
+    });
+    (function animateRing() {
+      ringX += (mouseX - ringX) * 0.12;
+      ringY += (mouseY - ringY) * 0.12;
+      cursorRing.style.left = ringX + 'px';
+      cursorRing.style.top  = ringY + 'px';
+      requestAnimationFrame(animateRing);
+    })();
+    document.querySelectorAll('a, button, .service-card, .portfolio-card, .exp-card, .testimonial-card').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursorRing.style.width  = '56px';
+        cursorRing.style.height = '56px';
+        cursor.style.transform  = 'translate(-50%,-50%) scale(0.4)';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursorRing.style.width  = '36px';
+        cursorRing.style.height = '36px';
+        cursor.style.transform  = 'translate(-50%,-50%) scale(1)';
+      });
+    });
+
+    // ── Sticky nav ──────────────────────────────────────────
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+
+    // ── Scroll reveal ───────────────────────────────────────
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ── PDF embed fallback ──────────────────────────────────
+    // If the embed fails (e.g. mobile, some browsers), show the fallback
+    const pdfEmbed = document.getElementById('pdfEmbed');
+    const pdfFallback = document.getElementById('pdfFallback');
+    if (pdfEmbed) {
+      // Try to detect if PDF is loading; if load event fires we're good
+      let pdfLoaded = false;
+      pdfEmbed.addEventListener('load', () => { pdfLoaded = true; });
+      // On mobile / iOS, the embed often renders 0 height — force fallback
+      setTimeout(() => {
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        if (isMobile || (!pdfLoaded && pdfEmbed.offsetHeight < 100)) {
+          pdfEmbed.style.display = 'none';
+          pdfFallback.style.display = 'flex';
+        }
+      }, 800);
+    }
+
+    // ── Contact form ────────────────────────────────────────
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.form-submit');
+      btn.textContent = 'Sending…';
+      btn.style.opacity = '0.7';
+      setTimeout(() => {
+        document.getElementById('contactForm').reset();
+        btn.textContent = 'Send Message →';
+        btn.style.opacity = '1';
+        const success = document.getElementById('formSuccess');
+        success.style.display = 'block';
+        setTimeout(() => { success.style.display = 'none'; }, 5000);
+      }, 1200);
+    }
+
+    // ── Active nav link highlight ───────────────────────────
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 120) current = s.id;
+      });
+      navLinks.forEach(a => {
+        a.style.color = a.getAttribute('href') === '#' + current
+          ? 'var(--gold)' : '';
+      });
+    }, { passive: true });
+  </script>
+</body>
+</html>
